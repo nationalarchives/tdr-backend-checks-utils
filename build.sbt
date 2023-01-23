@@ -1,9 +1,27 @@
 import Dependencies._
 
-ThisBuild / scalaVersion     := "2.13.8"
-ThisBuild / version          := "0.1.0-SNAPSHOT"
+ThisBuild / version := (ThisBuild / version).value
 ThisBuild / organization     := "uk.gov.nationalarchives"
-ThisBuild / organizationName := "tdr-backend-check-utils"
+ThisBuild / organizationName := "National Archives"
+
+ThisBuild / scmInfo := Some(
+  ScmInfo(
+    url("https://github.com/nationalarchives/tdr-backend-checks-utils"),
+    "git@github.com:nationalarchives/tdr-backend-checks-utils.git"
+  )
+)
+developers := List(
+  Developer(
+    id    = "tna-digital-archiving-jenkins",
+    name  = "TNA Digital Archiving",
+    email = "digitalpreservation@nationalarchives.gov.uk",
+    url   = url("https://github.com/nationalarchives/tdr-backend-checks-utils")
+  )
+)
+
+ThisBuild / description := "Utility classes and methods to support backend check processing for TDR"
+ThisBuild / licenses := List("MIT" -> new URL("https://choosealicense.com/licenses/mit/"))
+ThisBuild / homepage := Some(url("https://github.com/nationalarchives/tdr-backend-checks-utils"))
 
 lazy val root = (project in file("."))
   .settings(
@@ -17,5 +35,3 @@ lazy val root = (project in file("."))
       scalaTest % Test,
     )
   )
-
-// See https://www.scala-sbt.org/1.x/docs/Using-Sonatype.html for instructions on how to publish to Sonatype.

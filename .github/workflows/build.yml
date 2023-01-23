@@ -1,6 +1,5 @@
 name: Deploy if not a version bump PR
 on:
-  push:
   pull_request:
     types:
       - closed
