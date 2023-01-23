@@ -23,6 +23,12 @@ ThisBuild / description := "Utility classes and methods to support backend check
 ThisBuild / licenses := List("MIT" -> new URL("https://choosealicense.com/licenses/mit/"))
 ThisBuild / homepage := Some(url("https://github.com/nationalarchives/tdr-backend-checks-utils"))
 
+scalaVersion := "2.13.10"
+
+useGpgPinentry := true
+publishTo := sonatypePublishToBundle.value
+publishMavenStyle := true
+
 lazy val root = (project in file("."))
   .settings(
     name := "tdr-backend-checks-utils",
