@@ -1,4 +1,5 @@
 import Dependencies._
+import sbtrelease.ReleaseStateTransformations._
 
 ThisBuild / version := (ThisBuild / version).value
 ThisBuild / organization     := "uk.gov.nationalarchives"
@@ -28,6 +29,21 @@ scalaVersion := "2.13.10"
 useGpgPinentry := true
 publishTo := sonatypePublishToBundle.value
 publishMavenStyle := true
+
+releaseProcess := Seq[ReleaseStep](
+  checkSnapshotDependencies,
+  inquireVersions,
+  runClean,
+  runTest,
+  setReleaseVersion,
+  commitReleaseVersion,
+  tagRelease,
+  releaseStepCommand("publishSigned"),
+  releaseStepCommand("sonatypeBundleRelease"),
+  setNextVersion,
+  commitNextVersion,
+  pushChanges
+)
 
 lazy val root = (project in file("."))
   .settings(
