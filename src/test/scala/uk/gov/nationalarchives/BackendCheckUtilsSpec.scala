@@ -115,4 +115,3 @@ class BackendCheckUtilsSpec extends AnyFlatSpec with MockitoSugar with EitherVal
     s3Input.left.value.getMessage should equal("S3 write error")
   }
 }
-
