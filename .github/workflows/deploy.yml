@@ -1,6 +1,5 @@
-name: TDR Deploy Graphql Client
+name: TDR Deploy Backend Checks Utils
 on:
-  push:
   workflow_dispatch:
 jobs:
   deploy:
