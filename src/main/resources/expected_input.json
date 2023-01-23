@@ -1,0 +1,73 @@
+{
+  "results" : [
+    {
+      "consignmentId" : "2f1261c5-d5e7-4865-8078-c0bc6333164f",
+      "fileId" : "ec5ca215-c9cb-46d6-9c9e-ec8b90fed1db",
+      "userId" : "18c24625-e336-4dca-bda8-9bea30eb213b",
+      "consignmentType" : "standard",
+      "fileSize" : "0",
+      "clientChecksum" : "originalFilePath",
+      "originalPath" : "checksum",
+      "fileCheckResults" : {
+        "antivirus" : [
+          {
+            "fileId" : "ec5ca215-c9cb-46d6-9c9e-ec8b90fed1db",
+            "software" : "software",
+            "softwareVersion" : "softwareVersion",
+            "databaseVersion" : "databaseVersion",
+            "result" : "result",
+            "datetime" : 1
+          }
+        ],
+        "checksum" : [
+          {
+            "sha256Checksum" : "checksum",
+            "fileId" : "ec5ca215-c9cb-46d6-9c9e-ec8b90fed1db"
+          }
+        ],
+        "fileFormat" : [
+          {
+            "fileId" : "ec5ca215-c9cb-46d6-9c9e-ec8b90fed1db",
+            "software" : "software",
+            "softwareVersion" : "softwareVersion",
+            "binarySignatureFileVersion" : "binarySignatureFileVersion",
+            "containerSignatureFileVersion" : "containerSignatureFileVersion",
+            "method" : "method",
+            "matches" : [
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "redactedResults" : {
+    "redactedFiles" : [
+      {
+        "originalFileId" : "db75e4e5-ee0a-4269-88d2-c1de8c73020d",
+        "originalFilePath" : "original",
+        "redactedFileId" : "ec5ca215-c9cb-46d6-9c9e-ec8b90fed1db",
+        "redactedFilePath" : "redacted"
+      }
+    ],
+    "errors" : [
+    ]
+  },
+  "statuses" : {
+    "statuses" : [
+      {
+        "id" : "27506737-37fa-4899-b494-4871f7bc3141",
+        "statusType" : "Consignment",
+        "statusName" : "Status",
+        "statusValue" : "StatusValue",
+        "overwrite" : false
+      },
+      {
+        "id" : "847e1b70-f3d6-4f4d-8f60-1f307a7df126",
+        "statusType" : "Consignment",
+        "statusName" : "OverwriteStatus",
+        "statusValue" : "OverwriteStatusValue",
+        "overwrite" : true
+      }
+    ]
+  }
+}
