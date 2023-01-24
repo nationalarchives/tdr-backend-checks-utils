@@ -1,15 +1,13 @@
 package uk.gov.nationalarchives
 
-import io.circe
 import io.circe.generic.auto._
 import io.circe.parser.decode
-import software.amazon.awssdk.core.ResponseInputStream
 import software.amazon.awssdk.core.sync.RequestBody
 import software.amazon.awssdk.http.SdkHttpClient
 import software.amazon.awssdk.http.apache.ApacheHttpClient
 import software.amazon.awssdk.regions.Region
 import software.amazon.awssdk.services.s3.S3Client
-import software.amazon.awssdk.services.s3.model.{GetObjectRequest, GetObjectResponse, PutObjectRequest}
+import software.amazon.awssdk.services.s3.model.{GetObjectRequest, PutObjectRequest}
 import uk.gov.nationalarchives.BackendCheckUtils.{Input, S3Input}
 
 import java.net.URI
@@ -31,6 +29,7 @@ class BackendCheckUtils(s3Client: S3Client) {
       .map(_ => S3Input(key, bucket))
   }
 }
+
 object BackendCheckUtils {
   private def s3Client(endpoint: String) = {
     val httpClient: SdkHttpClient = ApacheHttpClient.builder.build

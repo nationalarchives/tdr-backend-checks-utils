@@ -1,24 +1,25 @@
 package uk.gov.nationalarchives
 
 import io.circe.Printer.spaces2
-import org.scalatest.flatspec.AnyFlatSpec
 import io.circe.generic.auto._
-import io.circe.syntax._
 import io.circe.parser.decode
+import io.circe.syntax._
 import org.mockito.ArgumentMatchers.any
-import org.mockito.{ArgumentCaptor, MockitoSugar, clazz}
+import org.mockito.{ArgumentCaptor, MockitoSugar}
 import org.scalatest.EitherValues
+import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers._
 import software.amazon.awssdk.core.ResponseInputStream
 import software.amazon.awssdk.core.sync.RequestBody
 import software.amazon.awssdk.http.AbortableInputStream
 import software.amazon.awssdk.services.s3.S3Client
 import software.amazon.awssdk.services.s3.model.{GetObjectRequest, GetObjectResponse, PutObjectRequest, PutObjectResponse}
-import uk.gov.nationalarchives.BackendCheckUtils.{Antivirus, ChecksumResult, FFID, File, FileCheckResults, Input, RedactedFilePairs, RedactedResults, Status, StatusResult}
+import uk.gov.nationalarchives.BackendCheckUtils._
 
 import java.io.ByteArrayInputStream
 import java.util.UUID
 import scala.io.Source
+
 class BackendCheckUtilsSpec extends AnyFlatSpec with MockitoSugar with EitherValues {
 
   "the case classes" should "create the expected json" in {
@@ -83,7 +84,7 @@ class BackendCheckUtilsSpec extends AnyFlatSpec with MockitoSugar with EitherVal
     requestValue.bucket() should equal("bucket")
   }
 
-  "writeResultJson" should "call return the original s3 input" in {
+  "writeResultJson" should "return the original s3 input" in {
     val s3Client = mock[S3Client]
     when(s3Client.putObject(any[PutObjectRequest], any[RequestBody])).thenReturn(PutObjectResponse.builder.build())
     val s3Input = new BackendCheckUtils(s3Client).writeResultJson("key", "bucket", "{}")
