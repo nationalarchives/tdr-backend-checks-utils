@@ -9,6 +9,9 @@
       "clientChecksum" : "originalFilePath",
       "originalPath" : "checksum",
       "fileCheckResults" : {
+        "failures" : [
+          "FailedLambda"
+        ],
         "antivirus" : [
           {
             "fileId" : "ec5ca215-c9cb-46d6-9c9e-ec8b90fed1db",

@@ -56,7 +56,7 @@ object BackendCheckUtils {
 
   case class Antivirus(fileId: UUID, software: String, softwareVersion: String, databaseVersion: String, result: String, datetime: Long)
 
-  case class FileCheckResults(antivirus: List[Antivirus], checksum: List[ChecksumResult], fileFormat: List[FFID])
+  case class FileCheckResults(failures: List[String], antivirus: List[Antivirus], checksum: List[ChecksumResult], fileFormat: List[FFID])
 
   case class File(
                    consignmentId: UUID,
