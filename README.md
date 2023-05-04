@@ -10,4 +10,4 @@ AWS recommends this approach for [passing large messages](https://docs.aws.amazo
 
 The input JSON is the same for each lambda in the backend checks so this project contains all the shared case classes.
 
-There are also two helper methods to read the input from S3 and write the output back to S3.
+There are also two helper methods to read the input from S3 and write the output back to S3
