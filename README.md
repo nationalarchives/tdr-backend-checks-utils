@@ -1,6 +1,6 @@
 #  TDR Backend Checks Utils
 
-The TDR backend checks are now running in a step function. 
+The TDR backend checks are now running in a step function.
 
 There is a size limit of 256Kb for messages passed between steps and for large consignments, the message size is more than this.
 
