@@ -27,7 +27,8 @@ class BackendCheckUtilsSpec extends AnyFlatSpec with MockitoSugar with EitherVal
     val fileId = UUID.fromString("ec5ca215-c9cb-46d6-9c9e-ec8b90fed1db")
     val userId = UUID.fromString("18c24625-e336-4dca-bda8-9bea30eb213b")
     val originalFileId = UUID.fromString("db75e4e5-ee0a-4269-88d2-c1de8c73020d")
-    val ffid = FFID(fileId, "software", "softwareVersion", "binarySignatureFileVersion", "containerSignatureFileVersion", "method", Nil) :: Nil
+    val ffidMatches = FFIDMetadataInputMatches(Some("txt"), "Some basis", Some("x-fmt/111"), Some(true), Some("format-name"))
+    val ffid = FFID(fileId, "software", "softwareVersion", "binarySignatureFileVersion", "containerSignatureFileVersion", "method",  ffidMatches :: Nil) :: Nil
     val checksum = ChecksumResult("checksum", fileId) :: Nil
     val av = Antivirus(fileId, "software", "softwareVersion", "databaseVersion", "result", 1L) :: Nil
     val json = Input(

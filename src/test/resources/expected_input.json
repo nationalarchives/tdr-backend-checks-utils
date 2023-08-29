@@ -34,6 +34,13 @@
             "containerSignatureFileVersion" : "containerSignatureFileVersion",
             "method" : "method",
             "matches" : [
+              {
+                "extension" : "txt",
+                "identificationBasis" : "Some basis",
+                "puid" : "x-fmt/111",
+                "fileExtensionMismatch" : true,
+                "formatName" : "format-name"
+              }
             ]
           }
         ]
