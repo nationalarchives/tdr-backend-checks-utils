@@ -50,8 +50,8 @@ object BackendCheckUtils {
 
   case class ChecksumResult(sha256Checksum: String, fileId: UUID)
 
-  case class FFIDMetadataInputMatches(extension: Option[String], identificationBasis: String, puid: Option[String], fileExtensionMismatch: Option[Boolean] = Some(false),
-                                      formatName: Option[String] = Some(""))
+  case class FFIDMetadataInputMatches(extension: Option[String], identificationBasis: String, puid: Option[String], fileExtensionMismatch: Option[Boolean],
+                                      formatName: Option[String])
 
   case class FFID(fileId: java.util.UUID, software: String, softwareVersion: String, binarySignatureFileVersion: String, containerSignatureFileVersion: String, method: String, matches: List[FFIDMetadataInputMatches])
 
