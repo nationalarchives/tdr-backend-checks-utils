@@ -6,10 +6,11 @@ pull_request_rules:
   - name: automatic merge for Scala Steward
     conditions:
       - author=tna-digital-archiving-jenkins
-      - "check-success=tdr-api-update"
+      - "check-success=test / test"
       - or:
           - files=build.sbt
           - files~=^(!?project/)
+          - files=version.sbt
     actions:
       review:
         type: APPROVE
