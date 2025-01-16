@@ -24,7 +24,7 @@ ThisBuild / description := "Utility classes and methods to support backend check
 ThisBuild / licenses := List("MIT" -> new URL("https://choosealicense.com/licenses/mit/"))
 ThisBuild / homepage := Some(url("https://github.com/nationalarchives/tdr-backend-checks-utils"))
 
-scalaVersion := "2.13.15"
+scalaVersion := "2.13.16"
 
 useGpgPinentry := true
 publishTo := sonatypePublishToBundle.value
