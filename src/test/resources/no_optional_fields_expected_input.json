@@ -35,18 +35,12 @@
             "method" : "method",
             "matches" : [
               {
-                "extension" : null,
-                "identificationBasis" : "Some basis",
-                "puid" : null,
-                "fileExtensionMismatch" : null,
-                "formatName" : null
+                "identificationBasis" : "Some basis"
               }
             ]
           }
         ]
-      },
-      "s3SourceBucket" : null,
-      "s3SourceBucketKey" : null
+      }
     }
   ],
   "redactedResults" : {

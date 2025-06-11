@@ -8,6 +8,8 @@
       "fileSize" : "0",
       "clientChecksum" : "originalFilePath",
       "originalPath" : "checksum",
+      "s3SourceBucket" : "source-bucket",
+      "s3SourceBucketKey" : "object/key",
       "fileCheckResults" : {
         "antivirus" : [
           {
@@ -44,9 +46,7 @@
             ]
           }
         ]
-      },
-      "s3SourceBucket" : "source-bucket",
-      "s3SourceBucketKey" : "object/key"
+      }
     }
   ],
   "redactedResults" : {
