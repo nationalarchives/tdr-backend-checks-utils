@@ -67,6 +67,8 @@ object BackendCheckUtils {
                    fileSize: String,
                    clientChecksum: String,
                    originalPath: String,
+                   s3SourceBucket: String,
+                   s3SourceBucketKey: String,
                    fileCheckResults: FileCheckResults
                  )
 
