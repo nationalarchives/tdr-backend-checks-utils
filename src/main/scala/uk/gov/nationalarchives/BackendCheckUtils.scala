@@ -67,9 +67,9 @@ object BackendCheckUtils {
                    fileSize: String,
                    clientChecksum: String,
                    originalPath: String,
-                   s3SourceBucket: String,
-                   s3SourceBucketKey: String,
-                   fileCheckResults: FileCheckResults
+                   fileCheckResults: FileCheckResults,
+                   s3SourceBucket: Option[String] = None,
+                   s3SourceBucketKey: Option[String] = None,
                  )
 
   case class RedactedResults(redactedFiles: List[RedactedFilePairs], errors: List[RedactedErrors])

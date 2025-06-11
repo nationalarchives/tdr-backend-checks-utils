@@ -35,18 +35,18 @@
             "method" : "method",
             "matches" : [
               {
-                "extension" : "txt",
+                "extension" : null,
                 "identificationBasis" : "Some basis",
-                "puid" : "x-fmt/111",
-                "fileExtensionMismatch" : true,
-                "formatName" : "format-name"
+                "puid" : null,
+                "fileExtensionMismatch" : null,
+                "formatName" : null
               }
             ]
           }
         ]
       },
-      "s3SourceBucket" : "source-bucket",
-      "s3SourceBucketKey" : "object/key"
+      "s3SourceBucket" : null,
+      "s3SourceBucketKey" : null
     }
   ],
   "redactedResults" : {

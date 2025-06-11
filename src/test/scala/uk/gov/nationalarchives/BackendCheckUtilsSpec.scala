@@ -32,7 +32,7 @@ class BackendCheckUtilsSpec extends AnyFlatSpec with MockitoSugar with EitherVal
     val checksum = ChecksumResult("checksum", fileId) :: Nil
     val av = Antivirus(fileId, "software", "softwareVersion", "databaseVersion", "result", 1L) :: Nil
     val json = Input(
-      List(File(consignmentId, fileId, userId, "standard", "0", "originalFilePath", "checksum", "source-bucket", "object/key", FileCheckResults(av, checksum, ffid))),
+      List(File(consignmentId, fileId, userId, "standard", "0", "originalFilePath", "checksum", FileCheckResults(av, checksum, ffid), Some("source-bucket"), Some("object/key"))),
       RedactedResults(RedactedFilePairs(originalFileId, "original", fileId, "redacted") :: Nil, Nil),
       StatusResult(
         List(
@@ -42,6 +42,29 @@ class BackendCheckUtilsSpec extends AnyFlatSpec with MockitoSugar with EitherVal
       )
     ).asJson.printWith(spaces2)
     val expectedJson = Source.fromResource("expected_input.json").mkString
+    json.trim should equal(expectedJson.trim)
+  }
+
+  "the case classes" should "handle optional fields" in {
+    val consignmentId = UUID.fromString("2f1261c5-d5e7-4865-8078-c0bc6333164f")
+    val fileId = UUID.fromString("ec5ca215-c9cb-46d6-9c9e-ec8b90fed1db")
+    val userId = UUID.fromString("18c24625-e336-4dca-bda8-9bea30eb213b")
+    val originalFileId = UUID.fromString("db75e4e5-ee0a-4269-88d2-c1de8c73020d")
+    val ffidMatches = FFIDMetadataInputMatches(None, "Some basis", None, None, None)
+    val ffid = FFID(fileId, "software", "softwareVersion", "binarySignatureFileVersion", "containerSignatureFileVersion", "method",  ffidMatches :: Nil) :: Nil
+    val checksum = ChecksumResult("checksum", fileId) :: Nil
+    val av = Antivirus(fileId, "software", "softwareVersion", "databaseVersion", "result", 1L) :: Nil
+    val json = Input(
+      List(File(consignmentId, fileId, userId, "standard", "0", "originalFilePath", "checksum", FileCheckResults(av, checksum, ffid))),
+      RedactedResults(RedactedFilePairs(originalFileId, "original", fileId, "redacted") :: Nil, Nil),
+      StatusResult(
+        List(
+          Status(UUID.fromString("27506737-37fa-4899-b494-4871f7bc3141"), "Consignment", "Status", "StatusValue"),
+          Status(UUID.fromString("847e1b70-f3d6-4f4d-8f60-1f307a7df126"), "Consignment", "OverwriteStatus", "OverwriteStatusValue", overwrite = true)
+        )
+      )
+    ).asJson.printWith(spaces2)
+    val expectedJson = Source.fromResource("no_optional_fields_expected_input.json").mkString
     json.trim should equal(expectedJson.trim)
   }
 
