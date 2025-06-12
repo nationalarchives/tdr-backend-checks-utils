@@ -32,7 +32,7 @@ class BackendCheckUtilsSpec extends AnyFlatSpec with MockitoSugar with EitherVal
     val checksum = ChecksumResult("checksum", fileId) :: Nil
     val av = Antivirus(fileId, "software", "softwareVersion", "databaseVersion", "result", 1L) :: Nil
     val json = Input(
-      List(File(consignmentId, fileId, userId, "standard", "0", "originalFilePath", "checksum", "source-bucket", "object/key", FileCheckResults(av, checksum, ffid))),
+      List(File(consignmentId, fileId, userId, "standard", "0", "originalFilePath", "checksum", Some("source-bucket"), Some("object/key"), FileCheckResults(av, checksum, ffid))),
       RedactedResults(RedactedFilePairs(originalFileId, "original", fileId, "redacted") :: Nil, Nil),
       StatusResult(
         List(
@@ -48,6 +48,17 @@ class BackendCheckUtilsSpec extends AnyFlatSpec with MockitoSugar with EitherVal
   "getResultJson" should "return the correct result if the json is valid" in {
     val s3Client = mock[S3Client]
     val expectedJson = Source.fromResource("expected_input.json").mkString
+    val inputStream = new ByteArrayInputStream(expectedJson.getBytes())
+    val response = new ResponseInputStream(GetObjectResponse.builder().build(), AbortableInputStream.create(inputStream))
+    when(s3Client.getObject(any[GetObjectRequest])).thenReturn(response)
+    val result = new BackendCheckUtils(s3Client).getResultJson("key", "bucket")
+    result.isRight should be(true)
+    result.value should equal(decode[Input](expectedJson).value)
+  }
+
+  "getResultJson" should "not error if optional fields are not present" in {
+    val s3Client = mock[S3Client]
+    val expectedJson = Source.fromResource("no_optional_fields_expected_input.json").mkString
     val inputStream = new ByteArrayInputStream(expectedJson.getBytes())
     val response = new ResponseInputStream(GetObjectResponse.builder().build(), AbortableInputStream.create(inputStream))
     when(s3Client.getObject(any[GetObjectRequest])).thenReturn(response)
