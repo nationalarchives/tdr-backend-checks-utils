@@ -8,8 +8,6 @@
       "fileSize" : "0",
       "clientChecksum" : "originalFilePath",
       "originalPath" : "checksum",
-      "s3SourceBucket" : "source-bucket",
-      "s3SourceBucketKey" : "object/key",
       "fileCheckResults" : {
         "antivirus" : [
           {
@@ -37,11 +35,7 @@
             "method" : "method",
             "matches" : [
               {
-                "extension" : "txt",
-                "identificationBasis" : "Some basis",
-                "puid" : "x-fmt/111",
-                "fileExtensionMismatch" : true,
-                "formatName" : "format-name"
+                "identificationBasis" : "Some basis"
               }
             ]
           }
