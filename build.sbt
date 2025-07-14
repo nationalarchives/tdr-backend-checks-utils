@@ -27,7 +27,11 @@ ThisBuild / homepage := Some(url("https://github.com/nationalarchives/tdr-backen
 scalaVersion := "2.13.16"
 
 useGpgPinentry := true
-publishTo := sonatypePublishToBundle.value
+publishTo := {
+  val centralSnapshots = "https://central.sonatype.com/repository/maven-snapshots/"
+  if (isSnapshot.value) Some("central-snapshots" at centralSnapshots)
+  else localStaging.value
+}
 publishMavenStyle := true
 
 releaseProcess := Seq[ReleaseStep](
@@ -39,7 +43,7 @@ releaseProcess := Seq[ReleaseStep](
   commitReleaseVersion,
   tagRelease,
   releaseStepCommand("publishSigned"),
-  releaseStepCommand("sonatypeBundleRelease"),
+  releaseStepCommand("sonaRelease"),
   setNextVersion,
   commitNextVersion,
   pushChanges
