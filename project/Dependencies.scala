@@ -1,7 +1,7 @@
 import sbt._
 
 object Dependencies {
-  private val circeVersion = "0.14.14"
+  private val circeVersion = "0.14.15"
 
   lazy val awsS3 = "software.amazon.awssdk" % "s3" % "2.34.5"
   lazy val circeCore = "io.circe" %% "circe-core" % circeVersion
