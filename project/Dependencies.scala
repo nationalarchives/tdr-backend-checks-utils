@@ -3,10 +3,10 @@ import sbt._
 object Dependencies {
   private val circeVersion = "0.14.15"
 
-  lazy val awsS3 = "software.amazon.awssdk" % "s3" % "2.42.20"
+  lazy val awsS3 = "software.amazon.awssdk" % "s3" % "2.42.23"
   lazy val circeCore = "io.circe" %% "circe-core" % circeVersion
   lazy val circeParser = "io.circe" %% "circe-parser" % circeVersion
   lazy val circeGeneric = "io.circe" %% "circe-generic" % circeVersion
   lazy val mockito = "org.mockito" %% "mockito-scala" % "2.1.0"
-  lazy val scalaTest = "org.scalatest" %% "scalatest" % "3.2.19"
+  lazy val scalaTest = "org.scalatest" %% "scalatest" % "3.2.20"
 }
