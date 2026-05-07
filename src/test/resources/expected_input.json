@@ -10,6 +10,10 @@
       "originalPath" : "checksum",
       "s3SourceBucket" : "source-bucket",
       "s3SourceBucketKey" : "object/key",
+      "s3QuarantineBucket" : "quarantine-bucket",
+      "s3QuarantineBucketKey" : "quarantine-object/key",
+      "s3CleanDestinationBucket" : "upload-bucket",
+      "s3CleanDestinationBucketKey" : "upload-object/key",
       "fileCheckResults" : {
         "antivirus" : [
           {
