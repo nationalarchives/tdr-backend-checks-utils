@@ -69,6 +69,10 @@ object BackendCheckUtils {
                    originalPath: String,
                    s3SourceBucket: Option[String],
                    s3SourceBucketKey: Option[String],
+                   s3QuarantineBucket: Option[String],
+                   s3QuarantineBucketKey: Option[String],
+                   s3CleanDestinationBucket: Option[String],
+                   s3CleanDestinationBucketKey: Option[String],
                    fileCheckResults: FileCheckResults
                  )
 
