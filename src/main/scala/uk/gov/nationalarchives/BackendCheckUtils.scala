@@ -4,7 +4,7 @@ import io.circe.generic.auto._
 import io.circe.parser.decode
 import software.amazon.awssdk.core.sync.RequestBody
 import software.amazon.awssdk.http.SdkHttpClient
-import software.amazon.awssdk.http.apache.ApacheHttpClient
+import software.amazon.awssdk.http.apache5.Apache5HttpClient
 import software.amazon.awssdk.regions.Region
 import software.amazon.awssdk.services.s3.S3Client
 import software.amazon.awssdk.services.s3.model.{GetObjectRequest, PutObjectRequest}
@@ -32,7 +32,7 @@ class BackendCheckUtils(s3Client: S3Client) {
 
 object BackendCheckUtils {
   private def s3Client(endpoint: String) = {
-    val httpClient: SdkHttpClient = ApacheHttpClient.builder.build
+    val httpClient: SdkHttpClient = Apache5HttpClient.builder.build
     S3Client.builder
       .region(Region.EU_WEST_2)
       .endpointOverride(URI.create(endpoint))
@@ -86,4 +86,3 @@ object BackendCheckUtils {
 
   case class S3Input(key: String, bucket: String)
 }
-
