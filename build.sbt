@@ -21,7 +21,7 @@ developers := List(
 )
 
 ThisBuild / description := "Utility classes and methods to support backend check processing for TDR"
-ThisBuild / licenses := List(License.apply("MIT", "https://choosealicense.com/licenses/mit/"))
+ThisBuild / licenses := List(License.apply("MIT", url("https://choosealicense.com/licenses/mit/")))
 ThisBuild / homepage := Some(url("https://github.com/nationalarchives/tdr-backend-checks-utils"))
 
 scalaVersion := "2.13.18"
