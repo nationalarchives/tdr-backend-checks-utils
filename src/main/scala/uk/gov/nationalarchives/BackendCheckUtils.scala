@@ -80,7 +80,7 @@ object BackendCheckUtils {
 
   case class RedactedErrors(fileId: UUID, cause: String) extends RedactedResult
 
-  case class RedactedFilePairs(originalFileId: UUID, originalFilePath: String, redactedFileId: UUID, redactedFilePath: String) extends RedactedResult
+  case class RedactedFilePairs(originalFileId: Option[UUID], originalFilePath: String, redactedFileId: UUID, redactedFilePath: String) extends RedactedResult
 
   case class Input(results: List[File], redactedResults: RedactedResults, statuses: StatusResult)
 

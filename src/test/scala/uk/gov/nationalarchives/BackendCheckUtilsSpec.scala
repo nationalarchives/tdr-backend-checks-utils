@@ -33,7 +33,7 @@ class BackendCheckUtilsSpec extends AnyFlatSpec with MockitoSugar with EitherVal
     val av = Antivirus(fileId, "software", "softwareVersion", "databaseVersion", "result", 1L) :: Nil
     val json = Input(
       List(File(consignmentId, fileId, userId, "standard", "0", "originalFilePath", "checksum", Some("source-bucket"), Some("object/key"), Some("quarantine-bucket"), Some("quarantine-object/key"), Some("upload-bucket"), Some("upload-object/key"), FileCheckResults(av, checksum, ffid))),
-      RedactedResults(RedactedFilePairs(originalFileId, "original", fileId, "redacted") :: Nil, Nil),
+      RedactedResults(RedactedFilePairs(Some(originalFileId), "original", fileId, "redacted") :: Nil, Nil),
       StatusResult(
         List(
           Status(UUID.fromString("27506737-37fa-4899-b494-4871f7bc3141"), "Consignment", "Status", "StatusValue"),
